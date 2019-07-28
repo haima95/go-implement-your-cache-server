@@ -1,8 +1,8 @@
 package cacheClient
 
 type Cmd struct {
-	Key   string
 	Name  string
+	Key   string
 	Value string
 	Error error
 }
