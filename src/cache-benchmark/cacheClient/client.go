@@ -1,18 +1,18 @@
 package cacheClient
 
 type Cmd struct {
-	Name string
-	Key string
+	Key   string
+	Name  string
 	Value string
 	Error error
 }
 
-type Client interface{
-	Run( *Cmd)
-	PipelinedRun([] *Cmd)
+type Client interface {
+	Run(*Cmd)
+	PipelinedRun([]*Cmd)
 }
 
-func New(typ,server string) Client {
+func New(typ, server string) Client {
 	if typ == "redis" {
 		return newRedisClient(server)
 	}
@@ -22,6 +22,6 @@ func New(typ,server string) Client {
 	if typ == "tcp" {
 		return newTCPClient(server)
 	}
-	panic("unknown client type "+typ)
+	panic("unknown client type " + typ)
 
 }
